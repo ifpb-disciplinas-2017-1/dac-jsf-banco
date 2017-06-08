@@ -7,9 +7,32 @@
     </h:head>
     <h:body>
         <h:form>
+            
             <h:inputText value="#{controllerCliente.cliente.nome}" />
-            <h:commandButton value="click-me!" 
-                             action="#{controllerCliente.atualizar()}" />
+            <h:commandButton value="salvar" 
+                             action="#{controllerCliente.salvarCliente()}"
+                             rendered="#{!controllerCliente.editando}"/>
+            <h:commandButton value="atualizar" 
+                             action="#{controllerCliente.atualizar()}" 
+                             rendered="#{controllerCliente.editando}"/>
+
+
+            <h:dataTable var="cliente" value="#{controllerCliente.todosOsClientes}">
+                <h:column>
+                    <h:outputText value="#{cliente.id}"/>
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{cliente.nome}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="remover" 
+                                     action="#{controllerCliente.removerCliente(cliente)}" />
+                </h:column>
+                <h:column>
+                    <h:commandButton value="editar" 
+                                     action="#{controllerCliente.editarCliente(cliente)}" />
+                </h:column>
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>

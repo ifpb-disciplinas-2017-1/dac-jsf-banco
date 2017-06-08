@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class Cliente implements Serializable{
 
     private String nome;
+    private int id;
 
     public Cliente(String nome) {
         this.nome = nome;
@@ -25,5 +26,14 @@ public class Cliente implements Serializable{
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
 }
