@@ -9,9 +9,10 @@
         <h:form>
             
             <h:inputText value="#{controllerCliente.cliente.nome}" />
+            
             <h:commandButton value="salvar" 
                              action="#{controllerCliente.salvarCliente()}"
-                             rendered="#{!controllerCliente.editando}"/>
+                             rendered="#{not controllerCliente.editando}"/>
             <h:commandButton value="atualizar" 
                              action="#{controllerCliente.atualizar()}" 
                              rendered="#{controllerCliente.editando}"/>

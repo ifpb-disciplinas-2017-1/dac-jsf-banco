@@ -1,9 +1,7 @@
 package ifpb.ads.cliente;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import ifpb.ads.infra.ClientesEmMemoria;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * @author Ricardo Job
@@ -12,29 +10,22 @@ import java.util.stream.Stream;
  */
 public class ClienteService {
 
-    private List<Cliente> clientes = new ArrayList<>();
+    private final Clientes clientes = new ClientesEmMemoria();
+//    private Clientes clientes = new ClientesJDBC();
 
     public void salvar(Cliente cliente) {
-        //cliente.setNome("Oi, "+cliente.getNome());
-        cliente.setId(clientes.size() + 1);
-        this.clientes.add(cliente);
+        this.clientes.salvar(cliente);
     }
 
     public void remover(Cliente cliente) {
-        this.clientes.remove(cliente);
+        this.clientes.remover(cliente);
     }
 
     public void atualizar(Cliente cliente) {
-        for (Cliente cli : clientes) {
-            if (cli.getId() == cliente.getId()) {
-                cli.setNome(cliente.getNome());
-                break;
-            }
-        }
+        this.clientes.atualizar(cliente);
     }
 
     public List<Cliente> todosOsClientes() {
-        //return Arrays.asList(new Cliente("Kiko"), new Cliente("Chaves"));
-        return this.clientes;
+        return this.clientes.todosOsClientes();
     }
 }

@@ -2,7 +2,6 @@ package ifpb.ads.cliente;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -12,7 +11,6 @@ import javax.inject.Named;
  * @since 07/06/2017, 16:14:04
  */
 @Named
-//@RequestScoped
 @SessionScoped
 public class ControllerCliente implements Serializable { //controllerCliente
 
