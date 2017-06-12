@@ -4,37 +4,56 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
+        <link href="css/exemplo.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <h:form>
-            
-            <h:inputText value="#{controllerCliente.cliente.nome}" />
-            
-            <h:commandButton value="salvar" 
-                             action="#{controllerCliente.salvarCliente()}"
-                             rendered="#{not controllerCliente.editando}"/>
-            <h:commandButton value="atualizar" 
-                             action="#{controllerCliente.atualizar()}" 
-                             rendered="#{controllerCliente.editando}"/>
+        <div id="topo"> topo </div> 
+        <div id="centro">
+            <h:form>
+                <h:messages layout="table" class="erro"/>
+                <h:inputText value="#{controllerCliente.cliente.nome}" 
+                             required="true" 
+                             requiredMessage="É preciso informar seu nome!"
+                             id="nome"/>
+                <!--<h:message for="nome" class="erro" />-->
+                <h:inputText value="#{controllerCliente.cliente.cpf}" 
+                             converter="converter.CpfConverter" 
+                             validator="validador.CPFValidador"
+                             maxlength="11" 
+                             id="cpf"/>
+                <!--<h:message for="cpf" class="erro" />-->
+                <h:commandButton value="salvar" 
+                                 action="#{controllerCliente.salvarCliente()}"
+                                 rendered="#{not controllerCliente.editando}"/>
+                <h:commandButton value="atualizar" 
+                                 action="#{controllerCliente.atualizar()}" 
+                                 rendered="#{controllerCliente.editando}"/>
 
 
-            <h:dataTable var="cliente" value="#{controllerCliente.todosOsClientes}">
-                <h:column>
-                    <h:outputText value="#{cliente.id}"/>
-                </h:column>
-                <h:column>
-                    <h:outputText value="#{cliente.nome}"/>
-                </h:column>
-                <h:column>
-                    <h:commandButton value="remover" 
-                                     action="#{controllerCliente.removerCliente(cliente)}" />
-                </h:column>
-                <h:column>
-                    <h:commandButton value="editar" 
-                                     action="#{controllerCliente.editarCliente(cliente)}" />
-                </h:column>
-            </h:dataTable>
-        </h:form>
+                <h:dataTable var="cliente" value="#{controllerCliente.todosOsClientes}">
+                    <h:column>
+                        <h:outputText value="#{cliente.id}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{cliente.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{cliente.cpf.formatado()}"/>
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="remover" 
+                                         action="#{controllerCliente.removerCliente(cliente)}" />
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="editar" 
+                                         action="#{controllerCliente.editarCliente(cliente)}" />
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+        <div id="rodape">
+            rodapé
+        </div>
     </h:body>
 </html>
 

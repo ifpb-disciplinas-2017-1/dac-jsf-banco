@@ -1,5 +1,6 @@
 package ifpb.ads.cliente;
 
+import ifpb.ads.cliente.cpf.CPF;
 import java.io.Serializable;
 
 /**
@@ -10,6 +11,7 @@ import java.io.Serializable;
 public class Cliente implements Serializable{
 
     private String nome;
+    private CPF cpf = new CPF();
     private int id;
 
     public Cliente(String nome) {
@@ -33,6 +35,14 @@ public class Cliente implements Serializable{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public CPF getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(CPF cpf) {
+        this.cpf = cpf;
     }
     
 
