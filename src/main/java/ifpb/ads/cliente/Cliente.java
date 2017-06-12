@@ -1,7 +1,11 @@
 package ifpb.ads.cliente;
 
 import ifpb.ads.cliente.cpf.CPF;
+import ifpb.ads.cliente.email.Email;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ricardo Job
@@ -13,6 +17,8 @@ public class Cliente implements Serializable{
     private String nome;
     private CPF cpf = new CPF();
     private int id;
+    private LocalDate nascimento;
+    private List<Email> emails = new ArrayList<>();
 
     public Cliente(String nome) {
         this.nome = nome;
@@ -44,6 +50,13 @@ public class Cliente implements Serializable{
     public void setCpf(CPF cpf) {
         this.cpf = cpf;
     }
-    
 
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+    
 }
